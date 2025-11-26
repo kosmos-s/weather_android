@@ -225,9 +225,8 @@ data class ForecastItem(
 
 ## 👨‍💻 개발자
 
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
+**kosmos-s**
+- GitHub: [@yourusername](https://github.com/kosmos-s)
 
 ---
 
