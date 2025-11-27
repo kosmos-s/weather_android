@@ -51,7 +51,7 @@
 ### 1️⃣ 프로젝트 클론
 
 ```bash
-git clone https://github.com/yourusername/weather-app.git
+git clone https://github.com/kosmos-s/weather-app.git
 cd weather-app
 ```
 
