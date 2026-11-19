@@ -51,8 +51,8 @@
 ### 1️⃣ 프로젝트 클론
 
 ```bash
-git clone https://github.com/kosmos-s/weather-app.git
-cd weather-app
+git clone https://github.com/kosmos-s/weather_android.git
+cd weather_android
 ```
 
 ### 2️⃣ OpenWeatherMap API 키 발급
@@ -63,11 +63,15 @@ cd weather-app
 
 ### 3️⃣ API 키 설정
 
-`MainActivity.kt` 파일에서 API 키 입력:
+소스에 키를 직접 입력하지 않습니다. 빌드 환경의 `OPENWEATHER_API_KEY` 환경 변수 또는 사용자 홈의 `.gradle/gradle.properties`에 같은 이름의 속성을 설정합니다. 환경 변수가 우선합니다.
 
-```kotlin
-val API_KEY = "YOUR_API_KEY_HERE" // 여기에 발급받은 API 키 입력
+```properties
+OPENWEATHER_API_KEY=YOUR_API_KEY_HERE
 ```
+
+실제 키는 저장소의 `gradle.properties`, 소스, 스크린샷, 빌드 로그에 남기지 마세요. 키가 없으면 빌드는 가능하지만 앱은 설정 안내만 표시하며 날씨 API를 호출하지 않습니다. CI 단위 테스트에는 실제 키가 필요하지 않습니다.
+
+이미 소스나 Git 이력에 노출된 키는 OpenWeatherMap 계정에서 폐기하고 재발급해야 합니다. 이번 변경은 기존 키를 폐기하거나 Git 이력을 지우지 않습니다. 빌드에 넣은 키는 APK에서 추출할 수 있으므로 배포 시에는 별도의 사용량 제한과 서버 측 보호를 검토해야 합니다.
 
 ### 4️⃣ 빌드 및 실행
 
@@ -118,9 +122,9 @@ val API_KEY = "YOUR_API_KEY_HERE" // 여기에 발급받은 API 키 입력
 ## 📋 요구 사항
 
 - **Android SDK**: 24+
-- **Target SDK**: 35
-- **Kotlin**: 1.9+
-- **Gradle**: 8.0+
+- **Compile / Target SDK**: 36
+- **Kotlin**: `gradle/libs.versions.toml` 기준
+- **Gradle**: 포함된 Gradle Wrapper 8.13 사용
 
 ---
 
@@ -201,7 +205,7 @@ data class ForecastItem(
 
 ## 🐛 알려진 이슈
 
-현재 알려진 이슈가 없습니다. 문제를 발견하시면 [Issues](https://github.com/yourusername/weather-app/issues)에 등록해주세요.
+자동 단위 테스트 외에 실제 API 응답·위치 권한·실기기 동작은 별도 확인이 필요합니다. 문제를 발견하시면 [Issues](https://github.com/kosmos-s/weather_android/issues)에 등록해주세요.
 
 ---
 
@@ -219,14 +223,14 @@ data class ForecastItem(
 
 ## 📝 라이선스
 
-이 프로젝트는 MIT 라이선스를 따릅니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
+저장소에 라이선스 파일이 등록되어 있지 않습니다. 사용·재배포 조건은 작성자에게 확인해 주세요.
 
 ---
 
 ## 👨‍💻 개발자
 
 **kosmos-s**
-- GitHub: [@yourusername](https://github.com/kosmos-s)
+- GitHub: [@kosmos-s](https://github.com/kosmos-s)
 
 ---
 

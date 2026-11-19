@@ -117,7 +117,12 @@ fun WeatherApp(onRequestLocation: ((Double, Double) -> Unit) -> Unit) {
     var selectedTab by remember { mutableStateOf(0) }
 
     val scope = rememberCoroutineScope()
-    val API_KEY = "73d4cfe9bf6ac8bd166e90a53bc6f73a" // OpenWeatherMap API 키를 여기에 입력하세요
+    val API_KEY = BuildConfig.OPENWEATHER_API_KEY
+
+    if (API_KEY.isBlank()) {
+        Text("날씨 API 키가 설정되지 않았습니다. README의 키 설정 방법에 따라 키를 지정한 뒤 다시 빌드하세요.")
+        return
+    }
 
     LaunchedEffect(Unit) {
         scope.launch {
