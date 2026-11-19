@@ -4,12 +4,20 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+val openWeatherApiKey = providers.environmentVariable("OPENWEATHER_API_KEY")
+    .orElse(providers.gradleProperty("OPENWEATHER_API_KEY"))
+    .getOrElse("")
+require(openWeatherApiKey.matches(Regex("[A-Za-z0-9]*"))) {
+    "OPENWEATHER_API_KEY에는 영문과 숫자만 사용할 수 있습니다."
+}
+
 android {
     namespace = "com.example.weather"
     compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.weather"
+        buildConfigField("String", "OPENWEATHER_API_KEY", "\"${openWeatherApiKey}\"")
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -36,6 +44,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
